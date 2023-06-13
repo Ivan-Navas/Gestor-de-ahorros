@@ -1,0 +1,97 @@
+.ObjetivesMain {
+  min-height: 500px;
+  background-color: #2f2f2f;
+  border-radius: 20px;
+  margin-top: 20px;
+  grid-template-columns: 50% 50%;   
+
+}
+.objetivesCardMain{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+.tittleObjetives {
+  color: #BADE00;
+  text-align: center;
+  padding-top: 4px;
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: 700;
+  font-size: 30px;
+  height: 30px;
+  font-family: 'roboto', sans-serif;
+}
+.main{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.porcentajeObjetivo{
+  text-align: center;
+  color: #BADE00;
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.containerObjetive{
+  position: relative;
+}
+.containerObjetive{
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 36px;
+}
+.objetiveCircle{
+  fill: none;
+  stroke: #BADE00;
+  stroke-width: 15;
+  stroke-dasharray: var(--porcentaje) 100 ;
+  transform: rotate(-90deg);
+  transform-origin: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.objetiveImage{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+}
+.circleContainer{
+  display: flex;
+}
+.infoObjetiveContainer{
+  margin-left: 20px;
+ 
+}
+.tittleObjetive{
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 30px;
+  color: #FFFFFF;
+}
+.infoObjetive{
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #BADE00;
+}
+.defaultTittle{
+  text-align: center;
+  color: #BADE00;
+}

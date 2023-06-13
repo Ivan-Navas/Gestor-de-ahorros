@@ -1,0 +1,11 @@
+.caroucelMain{   
+    height: 166px;
+    background-color: #2f2f2f;
+    border-radius: 16px;
+    margin-left: 30px;
+}
+.tittleCaroucel{
+    color: #BADE00;
+    text-align: center;
+    padding-top: 8px;
+}

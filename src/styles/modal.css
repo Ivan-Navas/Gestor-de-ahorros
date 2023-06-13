@@ -1,0 +1,45 @@
+.modalContainer{
+    width: 600px;
+    padding: 20px;
+    background-color: #2f2f2f;
+    border-radius: 16px;
+}
+.tituloModal{
+    color: #BADE00;
+    text-align: center;
+    margin-bottom: 36px;
+}
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input{
+    width: 200px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #BADE00; 
+    color: #fff;
+    font-size: 16px;
+    font-family: 'roboto',sans-serif;
+    outline: none; 
+    margin-right: 20px;
+    
+}
+.input::placeholder{
+    color: #fff;
+    font-family: 'roboto', sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 19px;
+}
+.fileContainer .file{
+    display: none;
+}
+.logoInput{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: block;
+}

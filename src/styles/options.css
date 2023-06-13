@@ -1,0 +1,19 @@
+.optionsMain{
+    display: grid;
+    width: 76px;
+    height: 168px;
+    background-color: #2f2f2f;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
+}
+.optionImage{
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.buttonOption{
+    background-color: transparent;
+    border: none;
+}
