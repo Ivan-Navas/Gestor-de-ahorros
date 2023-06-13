@@ -10,7 +10,7 @@ import ModalAddObjetive from "./components/ModalAddObjetive";
 function App() {
   return (
     <>
-      {/* <div className="appMainContainer">
+      <div className="appMainContainer">
         <div className="containermain">
           <Logo />
           <div className="containerOver">
@@ -35,8 +35,8 @@ function App() {
         <div className="objetivesMainContainer">
           <Objetives />
         </div>
-      </div> */}
-      <ModalAddObjetive/>
+      </div>
+      {/* <ModalAddObjetive/> */}
     </>
   );
 }
