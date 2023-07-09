@@ -2,16 +2,15 @@ import React from 'react'
 import "../styles/graphics.css"
 import GraphicsCard from './GraphicsCard'
 
-function Graphics({titulo, porcentaje, cantidad, total}) {
+function Graphics({titulo, cantidad, total}) {
   return (
-    <div className='graphicsMain'>
+    <>
         <GraphicsCard
         titulo={titulo}
-        porcentaje={porcentaje}
         cantidad={cantidad}
         total={total}
         />
-    </div>
+    </>
   )
 }
 

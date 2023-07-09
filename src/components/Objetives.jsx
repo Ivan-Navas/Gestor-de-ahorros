@@ -1,14 +1,8 @@
 import React from 'react'
 import "../styles/objetives.css"
-import { data } from '../data/data'
 import ObjetivesCard from '../components/ObjetivesCard'
 
-
 function Objetives() {
-
-  
-  
-
   return (
     <div className='ObjetivesMain' >
         <div className='title'>
@@ -17,8 +11,6 @@ function Objetives() {
         <div className='main' >
             <ObjetivesCard/>
         </div>
-        
-
     </div>
   )
 }

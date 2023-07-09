@@ -1,54 +1,32 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import benelli from "../images/benelli.jpg";
 import "../styles/objetives.css";
-import { data } from "../data/data";
+import { Context } from '../Context/Context'
+
 
 function ObjetivesCard() {
-  const [objetives, setObjetives] = useState([]);
+  const contextoCard = useContext(Context);
+  
   useEffect(() => {
-    conseguirObjetivos();
+    contextoCard.conseguirObjetivos();
   }, []);
-  const conseguirObjetivos = async () => {
-    const url = "http://localhost:3900/api/show_objetives";
-    let peticion = await fetch(url, {
-      method: "GET",
-    });
-    let datos = await peticion.json();
-
-    if (datos.status === "success") {
-      setObjetives(datos.objetivo);
-    }
-  };
-  const separador = (numero) => {
-    let parte = numero.toString().split(".");
-    parte[0] = parte[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    return parte.join(".");
-  };
-  const obtenerPorcentaje = (numero,ahorrado) => {
-    let ahorro = ahorrado;
-    let porcentaje = (ahorro * 100) / numero;
-    if (porcentaje >= 100) {
-      return 100;
-    }else if(porcentaje <100){
-      let porcentajeRecortado = porcentaje.toString().slice(0,5);
-      return porcentajeRecortado;
-    }
-  };
+  
+ 
   return (
     <>
-      {objetives.map((objetive) => {
+      {contextoCard.objetives.map((objetive) => {
         return (
           <div className="objetivesCardMain" key={objetive._id}>
             <div>
               <h6 className="porcentajeObjetivo">
-                {obtenerPorcentaje(objetive.cantidad,objetive.ahorrado)}%
+                {contextoCard.obtenerPorcentaje(objetive.cantidad,objetive.ahorrado)}%
               </h6>
               <div className="circleContainer">
                 <div
                   className="containerObjetive"
                   style={{
-                    "--porcentaje": obtenerPorcentaje(objetive.cantidad,objetive.ahorrado),
+                    "--porcentaje": contextoCard.obtenerPorcentaje(objetive.cantidad,objetive.ahorrado),
                   }}
                 >
                   <svg>
@@ -72,7 +50,7 @@ function ObjetivesCard() {
             <div className="infoObjetiveContainer">
               <h2 className="tittleObjetive">{objetive.nombre}</h2>
               <p className="infoObjetive">
-                {separador(objetive.ahorrado)} / {separador(objetive.cantidad)}{" "}
+                {contextoCard.separador(objetive.ahorrado)} / {contextoCard.separador(objetive.cantidad)}{" "}
               </p>
             </div>
           </div>
