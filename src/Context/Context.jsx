@@ -3,14 +3,11 @@ import React, { useState } from "react";
 export const Context = React.createContext({});
 
 export const ContextProvider = ({ children }) => {
-  const [objetives, setObjetives] = useState([]);//*Objetivos obtenidos de la base de datos 
-  const [saved, setSaved] = useState(0);//*Total de dinero ahorrado
-  const [saved1, setSaved1] = useState(0);//*Total de dinero ahorrado
-  const [completed, setCompleted] = useState(0);//*Objetivos completados
-  const [completed1, setCompleted1] = useState(0);//*Objetivos completados
-  const [total, setTotal] = useState(0);//*Total de objetivos creados
-  const [totalmoney, setTotalmoney] = useState(0);//*Todal de dinero sumando todos los objetivos
-  const [totalmoney1, setTotalmoney1] = useState(0);//*Todal de dinero sumando todos los objetivos
+  const [objetives, setObjetives] = useState([]); //*Objetivos obtenidos de la base de datos
+  const [saved, setSaved] = useState(0); //*Total de dinero ahorrado
+  const [completed, setCompleted] = useState(0); //*Objetivos completados
+  const [total, setTotal] = useState(0); //*Total de objetivos creados
+  const [totalmoney, setTotalmoney] = useState(0); //*Todal de dinero sumando todos los objetivos
 
 
   const conseguirObjetivos = async () => {
@@ -23,9 +20,9 @@ export const ContextProvider = ({ children }) => {
     if (datos.status === "success") {
       setObjetives(datos.objetivo);
       setTotal(datos.objetivo.length);
-      setCompleted1(getCompleted(datos.objetivo));
-      setSaved1(getSaved(datos.objetivo));
-      setTotalmoney1(getTotalMoney(datos.objetivo));
+      (getCompleted(datos.objetivo));
+      (getSaved(datos.objetivo));
+      (getTotalMoney(datos.objetivo));
     }
   };
 
@@ -56,20 +53,20 @@ export const ContextProvider = ({ children }) => {
     });
   };
 
-  const getSaved = (objetives)=>{
+  const getSaved = (objetives) => {
     let saved = 0;
-    objetives.map((objetive)=>{
+    objetives.map((objetive) => {
       saved += objetive.ahorrado;
       setSaved(saved);
-    })
-  }
-  const getTotalMoney = (objetives)=>{
+    });
+  };
+  const getTotalMoney = (objetives) => {
     let money = 0;
-    objetives.map((objetive)=>{
+    objetives.map((objetive) => {
       money += objetive.cantidad;
       setTotalmoney(money);
-    })
-  }
+    });
+  };
   return (
     <Context.Provider
       value={{
@@ -80,7 +77,7 @@ export const ContextProvider = ({ children }) => {
         total,
         totalmoney,
         completed,
-        saved
+        saved,
       }}
     >
       {children}
