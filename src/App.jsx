@@ -4,7 +4,10 @@ import Graphics from "./components/Graphics";
 import Caroucel from "./components/caroucel";
 import Options from "./components/Options";
 import Objetives from "./components/Objetives";
+import ModalAddObjetive from "./components/ModalAddObjetive.jsx";
 import { ContextProvider } from "./Context/Context";
+import ModalEditCard from "./components/ModalEditCard.jsx";
+
 
 function App() {
   return (
@@ -25,7 +28,8 @@ function App() {
             <Objetives />
           </div>
         </div>
-        {/* <ModalAddObjetive/> */}
+        <ModalAddObjetive/>
+        <ModalEditCard/>
       </ContextProvider>
     </>
   );

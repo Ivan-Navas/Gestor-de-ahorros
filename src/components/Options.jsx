@@ -1,12 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 import user from "../images/user.png";
 import plus from "../images/plus.png";
 import "../styles/options.css";
+import {Context} from "../Context/Context.jsx";
 
 function Options() {
+  const contextOptions = useContext(Context)
   return (
     <div className="optionsMain">
-      <button className="buttonOption">
+      <button className="buttonOption"
+        onClick={()=>{
+        contextOptions.setModalState(!contextOptions.modalState)
+      }}
+        >
         <img
           className="optionImage"
           src={plus}

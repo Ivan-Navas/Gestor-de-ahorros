@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import benelli from "../images/benelli.jpg";
 import { Context } from "../Context/Context";
 
 function GraphicsCard() {
   const contextGraphics = useContext(Context);
+
+
   return (
     <div className="containerGraphicsMain">
       <div className="graphicsMain">
