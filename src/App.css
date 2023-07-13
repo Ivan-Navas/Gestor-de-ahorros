@@ -7,28 +7,36 @@ body{
   padding: 0;
   margin: 0;
 }
-.appMainContainer{
+.mainContainerParent{
+  display: grid;
+  align-items: center;
+  padding: 20px;
+}
+.mainContainerChild{
+  width: 100%;
+  display: grid;
+}
+.containerUp{
   display: grid;
   grid-template-columns: 50% 50%;
-  height: 265px;
-  margin: 20px;
+  justify-content: space-between;
 }
-.graphicsContainer{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.containermain{
+.containerChild1{
   display: grid;
+  grid-template-rows: auto auto;
 }
-.containerOver{
-  display: grid;
+.optionCaroucel{
   width: 95%;
-  grid-template-columns: 10% 90%;
-  align-items: center;
-  justify-content: left;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
 }
-.objetivesMainContainer{
-  grid-column: span 3;
 
+@media (max-width : 913px){
+  .containerUp{
+    grid-template-columns: 100%;
+  }
+  .optionCaroucel{
+    margin-bottom: 20px;
+  }
 }

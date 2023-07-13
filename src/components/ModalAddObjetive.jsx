@@ -4,9 +4,55 @@ import logoInput from "../images/add.png";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { Context } from "../Context/Context.jsx";
+import { Peticion } from "../helpers/Peticion.jsx";
+import { useForm } from "../Hooks/useForm.js";
 
 function ModalAddObjetive() {
   const modalContext = useContext(Context);
+  const { formulario, enviado, cambiado } = useForm(); //* utilizado en la creacion y edicion de objetivos
+  const [result, setResult] = useState(false);
+
+  const saveObjetive = async (e) => {
+    //*Guardar nuevos objetivos
+    e.preventDefault();
+    let newObjetive = formulario;
+
+    const { datos, cargando } = await Peticion(
+      "http://localhost:3900/api/create_objetive",
+      "POST",
+      newObjetive
+    );
+
+    if (datos.status == "success") {
+      setResult("guardado");
+      const fileInput = document.querySelector(".file");
+
+      if (datos.status === "success" && fileInput.files[0]) {
+        setResult("guardado");
+
+        const formData = new FormData();
+        formData.append("file0", fileInput.files[0]);
+
+        const subida = await Peticion(
+          `http://localhost:3900/api/subir_imagen/${datos.objetivo._id}`,
+          "POST",
+          formData,
+          true
+        );
+
+        if (subida.datos.status === "success") {
+          setResult("guardado");
+          var imagen = subida;
+        } else {
+          setResult("error");
+        }
+      }
+    } else {
+      setResult("error");
+    }
+
+    modalContext.setModalState(false);
+  };
 
   return (
     <>
@@ -22,7 +68,7 @@ function ModalAddObjetive() {
               <AiOutlineClose className="closeButton " />
             </button>
             <h2 className="tituloModal">Nuevo Objetivo</h2>
-            <form className="form" onSubmit={modalContext.saveObjetive} autoComplete="off">
+            <form className="form" onSubmit={saveObjetive} autoComplete="off">
               <div className="inputsContainer">
                 <input
                   name="nombre"
@@ -30,7 +76,7 @@ function ModalAddObjetive() {
                   type="text"
                   placeholder="Objetivo"
                   required="true"
-                  onChange={modalContext.cambiado}
+                  onChange={cambiado}
                 />
                 <input
                   name="cantidad"
@@ -38,7 +84,7 @@ function ModalAddObjetive() {
                   type="number"
                   placeholder="Cantidad"
                   required="true"
-                  onChange={modalContext.cambiado}
+                  onChange={cambiado}
                 />
                 <div className="fileContainer">
                   <img className="logoInput" src={logoInput} alt="logoInput" />

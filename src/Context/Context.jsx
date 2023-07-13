@@ -10,57 +10,17 @@ export const ContextProvider = ({ children }) => {
   const [totalmoney, setTotalmoney] = useState(0); //*Todal de dinero sumando todos los objetivos
   const [completed, setCompleted] = useState(0); //*Objetivos completados
   const [total, setTotal] = useState(0); //*Total de objetivos creados
-  const [modalState, setModalState] = useState(false);//*Modal del modal add
-  const [modalEditState, setModalEditState] = useState(false);//*modal de edit 
-  const [showSave, setShowSave] = useState(false);//*en prueba
-  const [objetive, setObjetive] = useState({});//*un objetivo
-  const [idOneObjetive, setIdOneObjetive] = useState({});//*id de un objetivo
-  const { formulario, enviado, cambiado } = useForm();//* utilizado en la creacion y edicion de objetivos
+  const [modalState, setModalState] = useState(false); //*Modal del modal add
+  const [modalEditState, setModalEditState] = useState(false); //*modal de edit
+  const [showSave, setShowSave] = useState(false); //*en prueba
+  const [objetive, setObjetive] = useState({}); //*un objetivo
+  const [idOneObjetive, setIdOneObjetive] = useState({}); //*id de un objetivo
+  const { formulario, enviado, cambiado } = useForm(); //* utilizado en la creacion y edicion de objetivos
   const [result, setResult] = useState(false);
 
-  const saveObjetive = async (e) => {//*Guardar nuevos objetivos
-    // e.preventDefault();
-    let newObjetive = formulario;
-
-    const { datos, cargando } = await Peticion(
-      "http://localhost:3900/api/create_objetive",
-      "POST",
-      newObjetive
-    );
-
-    if (datos.status == "success") {
-      setResult("guardado");
-      modalContext.setIdOneObjetive(datos.objetivo._id);
-    } else {
-      setResult("error");
-    }
-
-    const fileInput = document.querySelector(".file");
-
-    if (datos.status === "success" && fileInput.files[0]) {
-      setResult("guardado");
-
-      const formData = new FormData();
-      formData.append("file0", fileInput.files[0]);
-
-      const subida = await Peticion(
-        `http://localhost:3900/api/subir_imagen/${datos.objetivo._id}`,
-        "POST",
-        formData,
-        true
-      );
-
-      if (subida.datos.status === "success") {
-        setResult("guardado");
-      } else {
-        setResult("error");
-      }
-    }
-    setModalState(false);
-  };
-
-  const editObjetive = async (e) => {//*Editar objetivo
-    // e.preventDefault();
+  const editObjetive = async (e) => {
+    //*Editar objetivo
+    e.preventDefault();
     let editObjetive = formulario;
 
     const { datos, cargando } = await Peticion(
@@ -82,7 +42,7 @@ export const ContextProvider = ({ children }) => {
 
       const formData = new FormData();
       formData.append("file0", fileInput.files[0]);
-      
+
       const subida = await Peticion(
         `http://localhost:3900/api/subir_imagen/${objetive._id}`,
         "POST",
@@ -98,7 +58,7 @@ export const ContextProvider = ({ children }) => {
     setModalEditState(false);
   };
 
-  const conseguirObjetivos = async () => {//*Consigue los objetivos
+  const conseguirObjetivos = async () => {
     //*Consigue los objetivos
     const url = "http://localhost:3900/api/show_objetives";
     let peticion = await fetch(url, {
@@ -181,6 +141,17 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  const getObjetive = async () => {
+    const datos = await Peticion(
+      `http://localhost:3900/api/conseguir_objetivo/${objetive.id}`,
+      "GET"
+    );
+
+    if (datos.status == "succes") {
+      setObjetive(datos.objetivo);
+    }
+  };
+
   const getEdited = async (id, objetive) => {
     let { datos } = await Peticion(
       `http://localhost:3900/api/conseguir_objetivo/${id}`,
@@ -195,7 +166,9 @@ export const ContextProvider = ({ children }) => {
   return (
     <Context.Provider
       value={{
-        saveObjetive,
+        getObjetive,
+        setObjetives,
+        //saveObjetive,
         editObjetive,
         cambiado,
         conseguirObjetivos,

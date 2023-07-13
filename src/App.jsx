@@ -8,28 +8,36 @@ import ModalAddObjetive from "./components/ModalAddObjetive.jsx";
 import { ContextProvider } from "./Context/Context";
 import ModalEditCard from "./components/ModalEditCard.jsx";
 
-
 function App() {
   return (
     <>
       <ContextProvider>
-        <div className="appMainContainer">
-          <div className="containermain">
-            <Logo />
-            <div className="containerOver">
-              <Options />
-              <Caroucel />
+        <div className="mainContainerParent">
+          <div className="mainContainerChild">
+            <div className="containerUp">
+              <div className="containerChild1">
+                <div className="logo">
+                  <Logo />
+                </div>
+                <div className="optionCaroucel">
+                  <Options />
+                  <Caroucel />
+                </div>
+              </div>
+              
+              <div className="containerChild2">
+                <Graphics />
+              </div>
+            </div>
+          
+            <div className="containerChild3">
+              <Objetives />
             </div>
           </div>
-          <div className="graphicsContainer">
-            <Graphics />
-          </div>
-          <div className="objetivesMainContainer">
-            <Objetives />
-          </div>
         </div>
-        <ModalAddObjetive/>
-        <ModalEditCard/>
+
+        <ModalAddObjetive />
+        <ModalEditCard />
       </ContextProvider>
     </>
   );

@@ -25,7 +25,7 @@ const ModalEditCard = () => {
               <AiOutlineClose className="closeButton " />
             </button>
             <h2 className="tituloModal">Editar Objetivo</h2>
-            <form className="form" onSubmit={modalContextEdit.editObjetive}>
+            <form className="form" onSubmit={modalContextEdit.editObjetive} autoComplete="off">
               <div className="inputsContainer">
                 <div>
                   <label className="label">Nombre</label>
