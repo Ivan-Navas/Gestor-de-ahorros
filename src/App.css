@@ -31,6 +31,9 @@ body{
   grid-template-columns: auto auto;
   justify-content: space-between;
 }
+.containerChild3{
+  min-height: 300px;
+}
 
 @media (max-width : 913px){
   .containerUp{

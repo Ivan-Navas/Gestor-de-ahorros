@@ -56,6 +56,7 @@ export const ContextProvider = ({ children }) => {
       }
     }
     setModalEditState(false);
+    conseguirObjetivos();
   };
 
   const conseguirObjetivos = async () => {
@@ -107,10 +108,10 @@ export const ContextProvider = ({ children }) => {
     });
   };
 
-  const getSaved = (objetives) => {
+  const getSaved = (objetivesG) => {
     //*consigue el dinero ahorrado
     let saved = 0;
-    objetives.map((objetive) => {
+    objetivesG.map((objetive) => {
       saved += objetive.ahorrado;
       setSaved(saved);
     });
@@ -138,18 +139,31 @@ export const ContextProvider = ({ children }) => {
       );
       setObjetives(updateObjetives);
       setTotal(updateObjetives.length);
+      if(updateObjetives.length <= 0){
+        setTotalmoney(0);
+        setSaved(0);
+        setCompleted(0);
+      }
+      else{
+        getSaved(updateObjetives);
+        getTotalMoney(updateObjetives);
+        getCompleted(updateObjetives);
+        getSaved(updateObjetives);
+      }
     }
   };
 
-  const getObjetive = async () => {
+  const getObjetive = async (objetive) => {
+    const objetivo = objetives;
     const datos = await Peticion(
       `http://localhost:3900/api/conseguir_objetivo/${objetive.id}`,
       "GET"
     );
 
     if (datos.status == "succes") {
-      setObjetive(datos.objetivo);
+      setObjetive(objetivo);
     }
+    
   };
 
   const getEdited = async (id, objetive) => {

@@ -51,6 +51,7 @@ function ModalAddObjetive() {
       setResult("error");
     }
 
+    modalContext.conseguirObjetivos();
     modalContext.setModalState(false);
   };
 

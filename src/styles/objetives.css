@@ -60,9 +60,6 @@
   line-height: 19px;
 }
 .containerObjetive{
-  position: relative;
-}
-.containerObjetive{
   width: 120px;
   height: 120px;
   display: flex;
