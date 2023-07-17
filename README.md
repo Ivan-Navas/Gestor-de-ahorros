@@ -16,7 +16,7 @@ La pagina tiene como funcion organizar nuestros objetivos economicos, con un tit
 
 ### Estado de la pagina
 
-Acatualmente me encuentro trabajando en la funcionalidad de inicio de sesión y el carrucel donde se mostrara informacion de objetivos como, objetivos creados recientemente, objetivos que han sido completados, mas cercanos o mas lejanos a completar, etc.
+Acatualmente me encuentro trabajando en la funcionalidad de inicio de sesión, corrigiendo errores y el carrucel donde se mostrara informacion de objetivos como, objetivos creados recientemente, objetivos que han sido completados, mas cercanos o mas lejanos a completar, etc. 
 
 ### Creacion de la pagina
 
