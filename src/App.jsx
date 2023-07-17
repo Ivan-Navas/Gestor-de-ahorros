@@ -1,7 +1,7 @@
 import "./App.css";
 import Logo from "./components/Logo";
 import Graphics from "./components/Graphics";
-import Caroucel from "./components/caroucel";
+import Caroucel from "./components/Caroucel";
 import Options from "./components/Options";
 import Objetives from "./components/Objetives";
 import ModalAddObjetive from "./components/ModalAddObjetive.jsx";

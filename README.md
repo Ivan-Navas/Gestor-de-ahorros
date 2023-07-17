@@ -11,7 +11,7 @@ Para la creacion del boceto que se utilizaria como referencia para la creacion d
 
 La pagina tiene como funcion organizar nuestros objetivos economicos, con un titulo, la cantidad de dinero💸 que se necesita ahorrar y la cantidad que se tiene ahorrada, tambien incluye una imagen a modo de ilustracion o representacion del objetivo
 
-- Nota: La pagina permite añadir una imagen personalizada, pero en caso de que no se agrege, se añadira una predeterminada:
+#### Nota: La pagina permite añadir una imagen personalizada, pero en caso de que no se agrege, se añadira una predeterminada:
   ![ImagenDefault](./public/logo.png)
 
 ### Estado de la pagina

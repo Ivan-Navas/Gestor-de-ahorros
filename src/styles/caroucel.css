@@ -1,24 +1,49 @@
 .caroucelMain {
-  width: 100%;
   height: 166px;
   background-color: #2f2f2f;
   border-radius: 16px;
 }
-.objetivesCardMainOne{
-  width: 100%;
-  display: grid;
-  align-items: center;
-  justify-content: left;
-}
-.circleContainerOne{
-}
-.containerObjetiveOne{
-
-}
-.titleCaroucel {
+.titleCaroucel{
   color: #bade00;
   text-align: center;
-  padding-top: 8px;
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+.oneObjtiveContainer{
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: center;
+}
+.porcentajeOneProduct{
+  text-align: center;
+  color: #BADE00;
+  font-family: 'Roboto';
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.containerOneObjetive{
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 36px;
+}
+.objetiveOneCircle{
+  fill: none;
+  stroke: #1f1f1f;
+  stroke-width: 10;
+  stroke-dasharray: 100 ;
+  transform-origin: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 .circleOneObjetive {
   fill: none;
@@ -50,4 +75,18 @@
   width: 90px;
   height: 90px;
   border-radius: 100px;
+}
+.infoOneObjetiveContainer{
+  align-items: center;
+  justify-content: center;
+}
+.nameOneObjetive{
+  font-family: 'Roboto';
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.infoOneObjetive{
+  font-family: 'Roboto';
+  font-weight: 700;
+  color: #BADE00;
 }

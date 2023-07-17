@@ -8,6 +8,7 @@ function Caroucel() {
   //TODO agregar objetivos en forma de carrucel
   return (
     <div className="caroucelMain">
+      <OneObjetiveCard />
     </div>
   );
 }

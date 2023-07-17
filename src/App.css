@@ -28,7 +28,7 @@ body{
 .optionCaroucel{
   width: 95%;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 10% auto;
   justify-content: space-between;
 }
 .containerChild3{
