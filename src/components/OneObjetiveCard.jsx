@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../Context/Context";
-import benelli from "../images/benelli.jpg";
 import "../styles/caroucel.css";
 
 function OneObjetiveCard() {
@@ -71,7 +70,6 @@ function OneObjetiveCard() {
           </div>
           <div className="infoOneObjetiveContainer">
             <h2 className="nameOneObjetive">{objetive.nombre}</h2>
-
             <p className="infoOneObjetive">
               {contextOneCard.separador(objetive.ahorrado)}/
               {contextOneCard.separador(objetive.cantidad)}
@@ -79,8 +77,8 @@ function OneObjetiveCard() {
           </div>
         </div>
       ) : (
-        <div>
-          <h2>No hay objetivo</h2>
+        <div className="elseContainer">
+          <h2 className="elseTitle">No hay objetivo</h2>
         </div>
       )}
     </>

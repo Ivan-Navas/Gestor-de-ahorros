@@ -28,11 +28,12 @@ body{
 .optionCaroucel{
   width: 95%;
   display: grid;
-  grid-template-columns: 10% auto;
+  grid-template-columns: 10% 85%;
   justify-content: space-between;
 }
 .containerChild3{
   min-height: 300px;
+  margin-bottom: 20px;
 }
 
 @media (max-width : 913px){

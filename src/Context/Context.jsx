@@ -10,7 +10,7 @@ export const ContextProvider = ({ children }) => {
   const [totalmoney, setTotalmoney] = useState(0); //*Todal de dinero sumando todos los objetivos
   const [completed, setCompleted] = useState(0); //*Objetivos completados
   const [total, setTotal] = useState(0); //*Total de objetivos creados
-  const [modalState, setModalState] = useState(false); //*Modal del modal add
+  const [modalState, setModalState] = useState(false); //*Estado del modal add
   const [modalEditState, setModalEditState] = useState(false); //*modal de edit
   const [showSave, setShowSave] = useState(false); //*en prueba
   const [objetive, setObjetive] = useState({}); //*un objetivo

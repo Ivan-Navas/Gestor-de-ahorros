@@ -5,7 +5,6 @@ import { Context } from "../Context/Context";
 function GraphicsCard() {
   const contextGraphics = useContext(Context);
 
-
   return (
     <div className="containerGraphicsMain">
       <div className="graphicsMain">
