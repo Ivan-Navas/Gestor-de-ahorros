@@ -9,6 +9,8 @@ function ObjetivesCard() {
   useEffect(() => {
     contextCard.conseguirObjetivos();
   }, []);
+  console.log(contextCard.objetives)
+
 
   return (
     <>
