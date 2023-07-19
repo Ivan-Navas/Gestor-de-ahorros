@@ -102,7 +102,7 @@ function GraphicsCard() {
           <div className="info">
             <h6 className="overTittle">Completado</h6>
             <p className="overInfo">
-              {contextGraphics.separador(contextGraphics.completed)}{/*TODO: solucionar el error que no muestra el numero correcto cuando se elimina un objetvo completado */}
+              {contextGraphics.separador(contextGraphics.completed)}
             </p>
           </div>
           <div className="info2">

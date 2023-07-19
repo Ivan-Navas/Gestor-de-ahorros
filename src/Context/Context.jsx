@@ -136,8 +136,8 @@ export const ContextProvider = ({ children }) => {
     if (datos.status === "success") {
       const updateObjetives = objetives.filter(
         (objetive) => objetive._id !== id
-      );
-      setObjetives(updateObjetives);
+      ); 
+      setObjetives(updateObjetives);   
       setTotal(updateObjetives.length);
       if(updateObjetives.length <= 0){
         setTotalmoney(0);

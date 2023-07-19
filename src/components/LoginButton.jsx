@@ -8,7 +8,6 @@ function LoginButton() {
   return (
     <button onClick={()=>{loginWithRedirect()}} className="buttonOption">
       <img className="optionImage" src={user} alt="Usuario" title="Usuario" />
-      {/*TODO: Crear la funcionalidad del usuario */}
     </button>
   );
 }
