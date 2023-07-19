@@ -1,10 +1,13 @@
 import React, {useContext} from "react";
-import user from "../images/user.png";
 import plus from "../images/plus.png";
 import "../styles/options.css";
 import {Context} from "../Context/Context.jsx";
+import LoginButton from "./LoginButton";
+import {useAuth0} from '@auth0/auth0-react'
+import LogoutButton from "./LogoutButton";
 
 function Options() {
+  const {user, isAuthenticated, isLoading} = useAuth0();
   const contextOptions = useContext(Context)
   return (
     <div className="optionsMain">
@@ -20,9 +23,7 @@ function Options() {
           title="Agregar objetivo"
         />
       </button>
-      <button className="buttonOption">
-        <img className="optionImage" src={user} alt="Usuario" title="Usuario" />
-      </button>
+      {(isAuthenticated ? <LogoutButton imagen={user.picture}/> : <LoginButton/>)}
     </div>
   );
 }

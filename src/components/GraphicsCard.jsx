@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
-import benelli from "../images/benelli.jpg";
 import { Context } from "../Context/Context";
 
 function GraphicsCard() {
   const contextGraphics = useContext(Context);
+
+  //TODO: Solucionar error al mostrar el porcentaje de objetivos completados
 
   return (
     <div className="containerGraphicsMain">
@@ -101,7 +102,7 @@ function GraphicsCard() {
           <div className="info">
             <h6 className="overTittle">Completado</h6>
             <p className="overInfo">
-              {contextGraphics.separador(contextGraphics.completed)}
+              {contextGraphics.separador(contextGraphics.completed)}{/*TODO: solucionar el error que no muestra el numero correcto cuando se elimina un objetvo completado */}
             </p>
           </div>
           <div className="info2">

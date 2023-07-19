@@ -53,7 +53,7 @@ function OneObjetiveCard() {
                   "https://res.cloudinary.com/ivannavas/image/upload/v1688963066/GestorDeAhorros/logo_xe6pbu.png" && (
                   <img
                     className="objetiveImage"
-                    src={"http://localhost:3900/api/imagen/" + objetive.imagen}
+                    src={"https://objetives-render.onrender.com/api/imagen/" + objetive.imagen}
                     alt="logoImagen"
                   />
                 )}

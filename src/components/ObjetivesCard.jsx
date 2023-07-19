@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
-import benelli from "../images/benelli.jpg";
 import "../styles/objetives.css";
 import { Context } from "../Context/Context";
 import { AiOutlineClose } from "react-icons/ai";
@@ -68,7 +67,7 @@ function ObjetivesCard() {
                     <img
                       className="objetiveImage"
                       src={
-                        "http://localhost:3900/api/imagen/" + objetive.imagen
+                        "https://objetives-render.onrender.com/api/imagen/" + objetive.imagen
                       }
                       alt="logoImagen"
                     />
