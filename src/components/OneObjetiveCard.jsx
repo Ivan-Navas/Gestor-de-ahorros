@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../Context/Context";
 import "../styles/caroucel.css";
+import {config} from 'dotenv'
 
 function OneObjetiveCard() {
   const contextOneCard = useContext(Context);
@@ -53,7 +54,7 @@ function OneObjetiveCard() {
                   "https://res.cloudinary.com/ivannavas/image/upload/v1688963066/GestorDeAhorros/logo_xe6pbu.png" && (
                   <img
                     className="objetiveImage"
-                    src={"https://objetives-render.onrender.com/api/imagen/" + objetive.imagen}
+                    src={"http://localhost:3900/api/imagen/" + objetive.imagen}
                     alt="logoImagen"
                   />
                 )}

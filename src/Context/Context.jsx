@@ -24,7 +24,7 @@ export const ContextProvider = ({ children }) => {
     let editObjetive = formulario;
 
     const { datos, cargando } = await Peticion(
-      `https://objetives-render.onrender.com/api/editar_objetivo/${objetive._id}`,
+      `http://localhost:3900/api/editar_objetivo/${objetive._id}`,
       "PUT",
       editObjetive
     );
@@ -44,7 +44,7 @@ export const ContextProvider = ({ children }) => {
       formData.append("file0", fileInput.files[0]);
 
       const subida = await Peticion(
-        `https://objetives-render.onrender.com/api/subir_imagen/${objetive._id}`,
+        `http://localhost:3900/api/subir_imagen/${objetive._id}`,
         "POST",
         formData,
         true
@@ -61,7 +61,7 @@ export const ContextProvider = ({ children }) => {
 
   const conseguirObjetivos = async () => {
     //*Consigue los objetivos
-    const url = "https://objetives-render.onrender.com/api/show_objetives";
+    const url = "http://localhost:3900/api/show_objetives";
     let peticion = await fetch(url, {
       method: "GET",
     });
@@ -129,7 +129,7 @@ export const ContextProvider = ({ children }) => {
   const deleteObjetive = async (id, objetives) => {
     //*elimina el objetivo
     let { datos } = await Peticion(
-      `https://objetives-render.onrender.com/api/delete_objetive/${id}`,
+      `http://localhost:3900/api/delete_objetive/${id}`,
       "DELETE"
     );
 
@@ -156,7 +156,7 @@ export const ContextProvider = ({ children }) => {
   const getObjetive = async (objetive) => {
     const objetivo = objetives;
     const datos = await Peticion(
-      `https://objetives-render.onrender.com/api/conseguir_objetivo/${objetive.id}`,
+      `http://localhost:3900/api/conseguir_objetivo/${objetive.id}`,
       "GET"
     );
 
@@ -168,7 +168,7 @@ export const ContextProvider = ({ children }) => {
 
   const getEdited = async (id, objetive) => {
     let { datos } = await Peticion(
-      `https://objetives-render.onrender.com/api/conseguir_objetivo/${id}`,
+      `http://localhost:3900/api/conseguir_objetivo/${id}`,
       "GET"
     );
 

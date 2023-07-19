@@ -69,7 +69,7 @@ function ObjetivesCard() {
                     <img
                       className="objetiveImage"
                       src={
-                        "https://objetives-render.onrender.com/api/imagen/" + objetive.imagen
+                        "http://localhost:3900/api/imagen/" + objetive.imagen
                       }
                       alt="logoImagen"
                     />
