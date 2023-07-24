@@ -38,7 +38,7 @@ function ModalAddObjetive() {
           "POST",
           formData,
           true
-        );
+        );  
 
         if (subida.datos.status === "success") {
           setResult("guardado");
