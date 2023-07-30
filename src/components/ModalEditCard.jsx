@@ -15,7 +15,7 @@ const ModalEditCard = () => {
     <div>
       {modalContextEdit.modalEditState && (
         <Overlay>
-          <div className="modalContainer edit">
+          <div className="modalEditContainer edit">
             <button
               className="closeModalWindows"
               onClick={() => {
@@ -88,6 +88,7 @@ const ModalEditCard = () => {
                   className="butttonAdd"
                 />
               </div>
+              
             </form>
           </div>
         </Overlay>

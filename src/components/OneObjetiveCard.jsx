@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../Context/Context";
 import "../styles/caroucel.css";
-import {config} from 'dotenv'
 
 function OneObjetiveCard() {
   const contextOneCard = useContext(Context);
