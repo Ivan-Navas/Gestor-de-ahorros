@@ -5,8 +5,7 @@ import logoInput from "../images/add.png";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { Context } from "../Context/Context.jsx";
-import { useForm } from "../Hooks/useForm.js";
-import { Peticion } from "../helpers/Peticion.jsx";
+
 
 const ModalEditCard = () => {
   const modalContextEdit = useContext(Context);
@@ -15,17 +14,21 @@ const ModalEditCard = () => {
     <div>
       {modalContextEdit.modalEditState && (
         <Overlay>
-          <div className="modalContainer edit">
+          <div className="modalEditContainer edit">
             <button
               className="closeModalWindows"
               onClick={() => {
                 modalContextEdit.setModalEditState(false);
+                modalContextEdit.setObjetive({})
               }}
             >
               <AiOutlineClose className="closeButton " />
             </button>
             <h2 className="tituloModal">Editar Objetivo</h2>
-            <form className="form" onSubmit={modalContextEdit.editObjetive} autoComplete="off">
+            <form className="form" onSubmit={
+              modalContextEdit.editObjetive
+            } 
+              autoComplete="off">
               <div className="inputsContainer">
                 <div>
                   <label className="label">Nombre</label>
@@ -88,6 +91,7 @@ const ModalEditCard = () => {
                   className="butttonAdd"
                 />
               </div>
+              
             </form>
           </div>
         </Overlay>

@@ -7,7 +7,6 @@ function LogoutButton({imagen}) {
   return (
     <button onClick={()=> logout({logoutParams: ({returnTo: window.locationOrigin})})} className="buttonOption">
       <img className="userImage" src={imagen} alt="Usuario" title="Usuario" />
-      {/*TODO: Crear la funcionalidad del usuario */}
     </button>
   );
 }

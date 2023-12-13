@@ -1,4 +1,5 @@
-.modalContainer {
+.modalContainer,
+.modalEditContainer {
   width: 800px;
   height: 200px;
   padding: 20px;
@@ -39,8 +40,9 @@
   justify-content: center;
 }
 .inputsContainer {
-  display: flex;
+  display: grid;
   margin-bottom: 40px;
+  grid-template-columns: auto auto auto auto;
 }
 .input {
   width: 200px;
@@ -116,4 +118,59 @@ input[type="number"]::-webkit-inner-spin-button {
   width: 50px;
   height: 50px;
   border-radius: 100px;
+}
+
+@media (max-width: 890px) {
+  .modalContainer {
+    width: 500px;
+    height: 300px;
+  }
+  .tituloModal {
+    margin-bottom: 10px;
+  }
+  .edit {
+    width: 600px;
+    height: 300px;
+  }
+  .form {
+    width: 100%;
+    height: 100%;
+  }
+  .inputsContainer {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .modalContainer {
+    width: 300px;
+  }
+  .edit {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .form {
+    width: 400px;
+    height: 100%;
+  }
+  .inputsContainer {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .input {
+    margin-left: 10px;
+  }
+  .fileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

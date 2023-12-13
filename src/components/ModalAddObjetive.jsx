@@ -18,7 +18,7 @@ function ModalAddObjetive() {
     let newObjetive = formulario;
 
     const { datos, cargando } = await Peticion(
-      "https://objetives-render.onrender.com/api/create_objetive",
+      "http://localhost:3900/api/create_objetive",
       "POST",
       newObjetive
     );
@@ -34,7 +34,7 @@ function ModalAddObjetive() {
         formData.append("file0", fileInput.files[0]);
 
         const subida = await Peticion(
-          `https://objetives-render.onrender.com/api/subir_imagen/${datos.objetivo._id}`,
+          `http://localhost:3900/api/subir_imagen/${datos.objetivo._id}`,
           "POST",
           formData,
           true
