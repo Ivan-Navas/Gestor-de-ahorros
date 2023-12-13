@@ -40,7 +40,24 @@ Luego, se rellena el formulario que se abrirá en una ventana modal
 
 ![AddForm](./readmeImages/addForm.jpg)
 
-
-
 y por ultimo se preciona en confirmar 
 
+#### Editar un objetivo 
+
+Para la edición se identifica el objetivo que se editará, y se pulsa editar
+
+![EditObjetive](./readmeImages/editarObjetivo.jpg)
+
+>[!NOTE] 
+>El formulario esta rellenado por defecto con la informacion que tenia el objetivo antes de ser editado
+
+![FormEdit](./readmeImages/editForm.jpg)
+
+>[!NOTE] 
+>Puedes cancelar la edicion precionando en la equis(x) en la parte superior derecha del modal
+
+![CancelEdit](./readmeImages/cancelEdit.jpg)
+
+Despues de editar los campos necesarios se preciona confirmar
+
+#### Eliminar un objetivo
