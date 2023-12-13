@@ -61,3 +61,13 @@ Para la edición se identifica el objetivo que se editará, y se pulsa editar
 Despues de editar los campos necesarios se preciona confirmar
 
 #### Eliminar un objetivo
+
+Para la eliminacion de un ojetivo solamente se presiona la equis(x) del que se desea eliminar 
+
+![DeleteObketive](./readmeImages/eliminarObjetivo.jpg)
+
+>[!IMPORTANT]
+>Al no tener inicio de sesión todas las personas veran los mismos objetivos
+
+>[!NOTE]
+>Pronto estara disponible la opcion de inicio de sesión
