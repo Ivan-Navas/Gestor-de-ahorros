@@ -70,4 +70,4 @@ Para la eliminacion de un ojetivo solamente se presiona la equis(x) del que se d
 >Al no tener inicio de sesión todas las personas veran los mismos objetivos
 
 >[!NOTE]
->Pronto estara disponible la opcion de inicio de sesión
+>Pronto estará disponible la opcion de inicio de sesión
