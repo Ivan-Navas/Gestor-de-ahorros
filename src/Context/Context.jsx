@@ -57,6 +57,7 @@ export const ContextProvider = ({ children }) => {
     }
     setModalEditState(false);
     conseguirObjetivos();
+    window.location.reload()
   };
 
   const conseguirObjetivos = async () => {
@@ -175,6 +176,7 @@ export const ContextProvider = ({ children }) => {
     if (datos.status == "success") {
       setObjetive(datos.objetivo);
     }
+    
   };
 
   return (

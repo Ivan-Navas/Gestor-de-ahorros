@@ -9,8 +9,6 @@ function ObjetivesCard() {
   useEffect(() => {
     contextCard.conseguirObjetivos();
   }, []);
-  console.log(contextCard.objetives)
-
 
   return (
     <>
@@ -95,6 +93,7 @@ function ObjetivesCard() {
                 <button
                   className="buttonEdit"
                   onClick={() => {
+                    contextCard.setObjetive({})
                     contextCard.setModalEditState(!contextCard.modalEditState);
                     contextCard.getEdited(objetive._id, contextCard.objetives);
                   }}
