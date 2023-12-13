@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import "../styles/modal.css";
-import logoInput from "../images/add.png";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { Context } from "../Context/Context.jsx";
@@ -88,7 +87,7 @@ function ModalAddObjetive() {
                   onChange={cambiado}
                 />
                 <div className="fileContainer">
-                  <img className="logoInput" src={logoInput} alt="logoInput" />
+                  <img className="logoInput" src="https://res.cloudinary.com/ivannavas/image/upload/v1702505569/GestorDeAhorros/Web/add_d2bzks.png" alt="logoInput" />
                   <input className="file" type="file" />
                 </div>
               </div>

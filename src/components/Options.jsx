@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import plus from "../images/plus.png";
 import "../styles/options.css";
 import {Context} from "../Context/Context.jsx";
 import LoginButton from "./LoginButton";
@@ -18,7 +17,7 @@ function Options() {
         >
         <img
           className="optionImage"
-          src={plus}
+          src="https://res.cloudinary.com/ivannavas/image/upload/v1702505563/GestorDeAhorros/Web/plus_yo7tf9"
           alt="Agregar"
           title="Agregar objetivo"
         />
