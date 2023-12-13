@@ -19,7 +19,8 @@ La pagina tiene como funcion organizar nuestros objetivos economicos, con un tit
 
 >[!NOTE] 
 >La pagina permite añadir una imagen personalizada, pero en caso de que no se agrege, se añadira una predeterminada:
->![ImagenDefault](./public/logo.png)
+
+![ImagenDefault](./public/logo.png)
 
 ### Estado de la pagina
 
