@@ -11,7 +11,7 @@ Para la creacion del boceto que se utilizaria como referencia para la creacion d
 >[click aqui](https://www.figma.com/file/oMhBibkLbX1TzGgETWfRlj/Ahorros?type=design&node-id=0%3A1&mode=design&t=ppkmoX07jPD7s5Jf-1)
 
 
-![FigmaBoceto](./readmeImages/figmaBoceto.png)
+![FigmaBoceto](https://res.cloudinary.com/ivannavas/image/upload/v1702504970/GestorDeAhorros/Documentacion/figmaBoceto_egigkd.png)
 
 ### Funcion de la pagina
 
@@ -20,7 +20,7 @@ La pagina tiene como funcion organizar nuestros objetivos economicos, con un tit
 >[!NOTE] 
 >La pagina permite añadir una imagen personalizada, pero en caso de que no se agrege, se añadira una predeterminada:
 
-![ImagenDefault](./public/logo.png)
+![ImagenDefault](https://res.cloudinary.com/ivannavas/image/upload/v1702505195/GestorDeAhorros/Documentacion/logo_jxwlsb.png)
 
 ### Estado de la pagina
 
@@ -34,11 +34,11 @@ Para la cracion de la pagia se creó un contexto en el cual se encentran todas l
 
 para la creacion de un objetivo de pulsa en el signo mas (+) que que encuentra en la parte izquierda de la pagina
 
-![AddImage](./readmeImages/crearObjetivo.png)
+![AddImage](https://res.cloudinary.com/ivannavas/image/upload/v1702504965/GestorDeAhorros/Documentacion/crearObjetivo_vul1km.png)
 
 Luego, se rellena el formulario que se abrirá en una ventana modal
 
-![AddForm](./readmeImages/addForm.jpg)
+![AddForm](https://res.cloudinary.com/ivannavas/image/upload/v1702504965/GestorDeAhorros/Documentacion/addForm_xbraqs.jpg)
 
 y por ultimo se preciona en confirmar 
 
@@ -46,17 +46,17 @@ y por ultimo se preciona en confirmar
 
 Para la edición se identifica el objetivo que se editará, y se pulsa editar
 
-![EditObjetive](./readmeImages/editarObjetivo.jpg)
+![EditObjetive](https://res.cloudinary.com/ivannavas/image/upload/v1702504966/GestorDeAhorros/Documentacion/editarObjetivo_wzq83j.jpg)
 
 >[!NOTE] 
 >El formulario esta rellenado por defecto con la informacion que tenia el objetivo antes de ser editado
 
-![FormEdit](./readmeImages/editForm.jpg)
+![FormEdit](https://res.cloudinary.com/ivannavas/image/upload/v1702504966/GestorDeAhorros/Documentacion/editForm_wwsovj.jpg)
 
 >[!NOTE] 
 >Puedes cancelar la edicion precionando en la equis(x) en la parte superior derecha del modal
 
-![CancelEdit](./readmeImages/cancelEdit.jpg)
+![CancelEdit](https://res.cloudinary.com/ivannavas/image/upload/v1702504965/GestorDeAhorros/Documentacion/cancelEdit_e9psiy.jpg)
 
 Despues de editar los campos necesarios se preciona confirmar
 
@@ -64,7 +64,7 @@ Despues de editar los campos necesarios se preciona confirmar
 
 Para la eliminacion de un ojetivo solamente se presiona la equis(x) del que se desea eliminar 
 
-![DeleteObketive](./readmeImages/eliminarObjetivo.jpg)
+![DeleteObjetive](https://res.cloudinary.com/ivannavas/image/upload/v1702504966/GestorDeAhorros/Documentacion/eliminarObjetivo_l4j1wu.jpg)
 
 >[!IMPORTANT]
 >Al no tener inicio de sesión todas las personas veran los mismos objetivos

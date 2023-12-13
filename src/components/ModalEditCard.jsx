@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/modal.css";
-import logoInput from "../images/add.png";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { Context } from "../Context/Context.jsx";
@@ -61,7 +60,7 @@ const ModalEditCard = () => {
                   />
                 </div>
                 <div className="fileContainer">
-                  <img className="logoInput" src={logoInput} alt="logoInput" />
+                  <img className="logoInput" src="https://res.cloudinary.com/ivannavas/image/upload/v1702505569/GestorDeAhorros/Web/add_d2bzks.png" alt="logoInput" />
                   <input className="fileEdit file" type="file" />
                 </div>
                 {/* {modalContextEdit.objetive.imagen !=

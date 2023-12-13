@@ -1,5 +1,4 @@
 import React from "react";
-import user from "../images/user.png";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function LogoutButton({imagen}) {
