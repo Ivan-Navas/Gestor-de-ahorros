@@ -26,9 +26,40 @@ function ModalAddObjetive() {
     };
     fetch(url, requestOptions)
       .then((response) => {
+        return response.json();
+      })
+      .then( async (data) => {
+        // Selecciona el elemento de input de tipo file que permite cargar imágenes
+        const inputElement = document.getElementById("fileInput");
+        const image = inputElement.files[0]
+        
+        if (inputElement.value) {
+
+          const formData = new FormData();
+          formData.append("file0", image, image.name);
+          await fetch("http://localhost:3900/api/subir_imagen/" + data.objetivo._id , {
+            method: "POST",
+            headers: {
+              'Authorization': localStorage.getItem("token"),
+            },
+            body: formData,
+          })
+            .then((response) => response.json())
+            .then((data) => {
+
+            })
+            .catch((error) => {
+              console.error("Error al subir la imagen:", error);
+            });
+        }
+
+
         modalContext.conseguirObjetivos();
         modalContext.setModalState(false);
-      })
+
+          
+        }
+      )
       .catch((error) => console.log(error));
   };
 
@@ -70,7 +101,7 @@ function ModalAddObjetive() {
                     src="https://res.cloudinary.com/ivannavas/image/upload/v1702505569/GestorDeAhorros/Web/add_d2bzks.png"
                     alt="logoInput"
                   />
-                  <input className="file" type="file" />
+                  <input className="file" type="file" id="fileInput" name="file0" />
                 </div>
               </div>
               <div className="buttonAddContainer">

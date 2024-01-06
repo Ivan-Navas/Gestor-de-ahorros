@@ -8,7 +8,7 @@ import { Context } from "../Context/Context.jsx";
 
 const ModalEditCard = () => {
   const modalContextEdit = useContext(Context);
-  console.log(modalContextEdit.objetive)
+  // console.log(modalContextEdit.objetive)
 
   return (
     <div>
