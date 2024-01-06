@@ -15,43 +15,21 @@ function ModalAddObjetive() {
     //*Guardar nuevos objetivos
     e.preventDefault();
     let newObjetive = formulario;
-
-    const { datos, cargando } = await Peticion(
-      "http://localhost:3900/api/create_objetive",
-      "POST",
-      newObjetive
-    );
-
-    if (datos.status == "success") {
-      setResult("guardado");
-      const fileInput = document.querySelector(".file");
-
-      if (datos.status === "success" && fileInput.files[0]) {
-        setResult("guardado");
-
-        const formData = new FormData();
-        formData.append("file0", fileInput.files[0]);
-
-        const subida = await Peticion(
-          `http://localhost:3900/api/subir_imagen/${datos.objetivo._id}`,
-          "POST",
-          formData,
-          true
-        );
-
-        if (subida.datos.status === "success") {
-          setResult("guardado");
-          var imagen = subida;
-        } else {
-          setResult("error");
-        }
-      }
-    } else {
-      setResult("error");
-    }
-
-    modalContext.conseguirObjetivos();
-    modalContext.setModalState(false);
+    const url = "http://localhost:3900/api/create_objetive";
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(newObjetive),
+    };
+    fetch(url, requestOptions)
+      .then((response) => {
+        modalContext.conseguirObjetivos();
+        modalContext.setModalState(false);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -87,7 +65,11 @@ function ModalAddObjetive() {
                   onChange={cambiado}
                 />
                 <div className="fileContainer">
-                  <img className="logoInput" src="https://res.cloudinary.com/ivannavas/image/upload/v1702505569/GestorDeAhorros/Web/add_d2bzks.png" alt="logoInput" />
+                  <img
+                    className="logoInput"
+                    src="https://res.cloudinary.com/ivannavas/image/upload/v1702505569/GestorDeAhorros/Web/add_d2bzks.png"
+                    alt="logoInput"
+                  />
                   <input className="file" type="file" />
                 </div>
               </div>
