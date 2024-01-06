@@ -114,7 +114,6 @@ export const ContextProvider = ({ children }) => {
       },
     });
     let datos = await peticion.json();
-    console.log(datos);
     if (datos.status === "success") {
       setObjetives(datos.objetivo);
       setTotal(datos.objetivo.length);
@@ -207,20 +206,8 @@ export const ContextProvider = ({ children }) => {
   };
 
   const getObjetive = async (objetive) => {
-    const objetivo = objetives;
-    const datos = await Peticion(
+    const datos = await fetch(
       `http://localhost:3900/api/conseguir_objetivo/${objetive.id}`,
-      "GET"
-    );
-
-    if (datos.status == "succes") {
-      setObjetive(objetivo);
-    }
-  };
-
-  const getEdited = async (id, objetive) => {
-    let { datos } = await Peticion(
-      `http://localhost:3900/api/conseguir_objetivo/${id}`,
       {
         method: "GET",
         headers: {
@@ -229,10 +216,40 @@ export const ContextProvider = ({ children }) => {
         },
       }
     );
+    const data = datos.json()
+    console.log(data);
 
-    if (datos.status == "success") {
-      setObjetive(datos.objetivo);
+    if (datos.status == "succes") {
+      setObjetive(data);
     }
+  };
+
+  const getEdited = async (id, objetive) => {
+    fetch(`http://localhost:3900/api/conseguir_objetivo/${id}`,{
+      headers: {
+        'Authorization': localStorage.getItem('token') ,
+      }
+    })
+  .then(response => {
+    // Verificar si la respuesta es exitosa (código de estado 200-299)
+    if (!response.ok) {
+      throw new Error('La petición no fue exitosa');
+    }
+    
+    // Convertir la respuesta a JSON
+    return response.json();
+  })
+  .then(data => {
+    // Manipular los datos obtenidos
+    console.log(data);
+    setObjetive(data.objetivo)
+  })
+  .catch(error => {
+    // Manejar errores
+    console.error('Error en la petición:', error);
+  });
+
+    
   };
 
   return (
