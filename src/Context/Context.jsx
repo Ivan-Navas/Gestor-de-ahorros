@@ -175,34 +175,21 @@ export const ContextProvider = ({ children }) => {
 
   const deleteObjetive = async (id, objetives) => {
     //*elimina el objetivo
-    let { datos } = await Peticion(
-      `http://localhost:3900/api/delete_objetive/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.getItem("token"),
-        },
-      }
-    );
-
-    if (datos.status === "success") {
-      const updateObjetives = objetives.filter(
-        (objetive) => objetive._id !== id
-      );
-      setObjetives(updateObjetives);
-      setTotal(updateObjetives.length);
-      if (updateObjetives.length <= 0) {
-        setTotalmoney(0);
-        setSaved(0);
-        setCompleted(0);
-      } else {
-        getSaved(updateObjetives);
-        getTotalMoney(updateObjetives);
-        getCompleted(updateObjetives);
-        getSaved(updateObjetives);
+    const url = "http://localhost:3900/api/delete_objetive/" + id
+    const requestOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token'),
       }
     }
+
+    fetch(url,requestOptions)
+    .then((response)=>{
+      window.location.reload()
+    }).catch(error=>{
+      console.log(error)
+    })
   };
 
   const getObjetive = async (objetive) => {
@@ -241,7 +228,6 @@ export const ContextProvider = ({ children }) => {
   })
   .then(data => {
     // Manipular los datos obtenidos
-    console.log(data);
     setObjetive(data.objetivo)
   })
   .catch(error => {
