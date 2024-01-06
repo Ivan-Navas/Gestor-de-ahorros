@@ -2,19 +2,63 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/login.css";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import newUseForm from "../Hooks/newUseForm";
+import useAuth from "../Hooks/useAuth";
 
 function Login() {
   const [view, setView] = useState(false);
   const [type, setType] = useState("password");
-
-  const submit = (e)=>{
+  const { form, changed } = newUseForm({});
+  const [message, setMessage] = useState(false);
+  const { auth, setAuth } = useAuth();
+  const submit = async (e) => {
     e.preventDefault();
-    console.log(type, view)
-  }
+
+    const url = "http://localhost:3900/api/user/login";
+
+    let userToLogin = form;
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json", //*tipo de contenido
+      },
+      body: JSON.stringify(userToLogin), //*convertir la info a json
+    };
+
+    //*envia una peticion por post
+    fetch(url, requestOptions)
+      .then((response) => {
+        if (response.ok) {
+          //*la peticion fue exitosa
+          return response.json(); //*parsear la respuesta a json
+        } else {
+          //*la peticion tiene un error
+          throw new Error(`peticion falló con status ${response.status}`);
+        }
+      })
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        setMessage(true);
+
+        //*setear datos en auth
+        setAuth(data.user);
+
+        setTimeout(() => {
+          window.location.reload();
+        }, "1000");
+      })
+      .catch((error) => {
+        //*si ocurre algun error durante la peticion
+        console.error(error);
+        setMessage(true);
+      });
+  };
 
   return (
     <div className="login">
-      <div className="login__container">
+      <section className="login__container">
         <h2 className="login__tittle">Inicio de sesíon</h2>
         <div className="image">
           <img
@@ -25,28 +69,45 @@ function Login() {
         </div>
         <h2 className="login__web">Gestor de ahorros</h2>
         <form className="login__form" onSubmit={submit}>
-          <input type="text" className="form__input" placeholder="Correo" />
+          <input
+            type="text"
+            className="form__input"
+            placeholder="Correo"
+            name="email"
+            onChange={(e) => {
+              changed(e.target.name, e.target.value);
+            }}
+          />
           <div className="form__password">
             <input
+              name="password"
               autoComplete="none"
               type={type}
               className="form__input input--password"
               placeholder="Contraseña"
+              onChange={(e) => {
+                changed(e.target.name, e.target.value);
+              }}
             />
             {view ? (
-              <button className="form__viewButton" onClick={()=>{
-                
-                setType("password")
-                setView(false)
-              }}>
+              <button
+                className="form__viewButton"
+                onClick={() => {
+                  setType("password");
+                  setView(false);
+                }}
+              >
                 {" "}
                 <AiFillEye className="form__view" />{" "}
               </button>
             ) : (
-              <button className="form__viewButton" onClick={()=>{
-                setType("text")
-                setView(true)
-              }}>
+              <button
+                className="form__viewButton"
+                onClick={() => {
+                  setType("text");
+                  setView(true);
+                }}
+              >
                 {" "}
                 <AiFillEyeInvisible className="form__view" />{" "}
               </button>
@@ -77,7 +138,7 @@ function Login() {
             />
           </button>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

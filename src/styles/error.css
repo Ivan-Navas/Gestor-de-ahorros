@@ -1,0 +1,39 @@
+.error{
+  width: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+.error__message{
+  font-size: 40px;
+  color: #f2f2f2;
+  font-family: 'roboto';
+  text-align: center;
+}
+.error__code{
+  font-size: 60px;
+  font-weight: 900;
+  color: #bade00;
+  text-align: center;
+}
+.error__return{
+  width: 400px;
+  height: 50px;
+  font-family: 'roboto';
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 600;
+  color: #2f2f2f;
+  text-align: center;
+  background: #bade00;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

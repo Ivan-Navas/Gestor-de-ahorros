@@ -1,12 +1,20 @@
-import React from 'react'
-import { Navigate, Outlet} from 'react-router-dom'
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
 
 function PrivateLayout() {
+  const { auth } = useAuth({});
   return (
-    <section>
-      <Outlet />
-    </section>
-  )
+    <>
+      {auth._id ? (
+        <section>
+          <Outlet />
+        </section>
+      ) : (
+        <Navigate to="/" />
+      )}
+    </>
+  );
 }
 
-export default PrivateLayout
+export default PrivateLayout;

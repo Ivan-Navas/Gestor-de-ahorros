@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Peticion } from "../helpers/Peticion.jsx";
 import { useForm } from "../Hooks/useForm.js";
 
 export const Context = React.createContext({});
 
 export const ContextProvider = ({ children }) => {
+  const [auth, setAuth] = useState({});
   const [objetives, setObjetives] = useState([]); //*Objetivos obtenidos de la base de datos
   const [saved, setSaved] = useState(0); //*Total de dinero ahorrado
   const [totalmoney, setTotalmoney] = useState(0); //*Todal de dinero sumando todos los objetivos
@@ -17,6 +18,42 @@ export const ContextProvider = ({ children }) => {
   const [idOneObjetive, setIdOneObjetive] = useState({}); //*id de un objetivo
   const { formulario, enviado, cambiado } = useForm(); //* utilizado en la creacion y edicion de objetivos
   const [result, setResult] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    authUser();
+  }, []);
+
+  const authUser = async () => {
+    //* sacar datos del usuario identificado del localstoraje
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
+
+    //* comprobar si tiene el token y el user
+    if (!token && !user) {
+      setLoading(false);
+      return false;
+    }
+
+    //*transformar datos json del usuario a objeto js
+    const userObj = JSON.parse(user);
+    const userId = userObj.id;
+
+    //* peticion ajax al backend para comprobar el token y devolver datos del usuario
+
+    const url = "http://localhost:3900/api/user/profile/" + userId;
+
+    const request = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "aplication/json",
+        Authorization: token,
+      },
+    });
+    const data = await request.json();
+    setAuth(data.user);
+    setLoading(false);
+  };
 
   const editObjetive = async (e) => {
     //*Editar objetivo
@@ -25,8 +62,14 @@ export const ContextProvider = ({ children }) => {
 
     const { datos, cargando } = await Peticion(
       `http://localhost:3900/api/editar_objetivo/${objetive._id}`,
-      "PUT",
-      editObjetive
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token"),
+        },
+        editObjetive,
+      }
     );
 
     if (datos.status == "success") {
@@ -57,7 +100,7 @@ export const ContextProvider = ({ children }) => {
     }
     setModalEditState(false);
     conseguirObjetivos();
-    window.location.reload()
+    window.location.reload();
   };
 
   const conseguirObjetivos = async () => {
@@ -65,9 +108,13 @@ export const ContextProvider = ({ children }) => {
     const url = "http://localhost:3900/api/show_objetives";
     let peticion = await fetch(url, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
     });
     let datos = await peticion.json();
-
+    console.log(datos);
     if (datos.status === "success") {
       setObjetives(datos.objetivo);
       setTotal(datos.objetivo.length);
@@ -131,21 +178,26 @@ export const ContextProvider = ({ children }) => {
     //*elimina el objetivo
     let { datos } = await Peticion(
       `http://localhost:3900/api/delete_objetive/${id}`,
-      "DELETE"
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token"),
+        },
+      }
     );
 
     if (datos.status === "success") {
       const updateObjetives = objetives.filter(
         (objetive) => objetive._id !== id
-      ); 
-      setObjetives(updateObjetives);   
+      );
+      setObjetives(updateObjetives);
       setTotal(updateObjetives.length);
-      if(updateObjetives.length <= 0){
+      if (updateObjetives.length <= 0) {
         setTotalmoney(0);
         setSaved(0);
         setCompleted(0);
-      }
-      else{
+      } else {
         getSaved(updateObjetives);
         getTotalMoney(updateObjetives);
         getCompleted(updateObjetives);
@@ -164,24 +216,31 @@ export const ContextProvider = ({ children }) => {
     if (datos.status == "succes") {
       setObjetive(objetivo);
     }
-    
   };
 
   const getEdited = async (id, objetive) => {
     let { datos } = await Peticion(
       `http://localhost:3900/api/conseguir_objetivo/${id}`,
-      "GET"
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: localStorage.getItem("token"),
+        },
+      }
     );
 
     if (datos.status == "success") {
       setObjetive(datos.objetivo);
     }
-    
   };
 
   return (
     <Context.Provider
       value={{
+        authUser,
+        auth,
+        setAuth,
         getObjetive,
         setObjetives,
         //saveObjetive,
