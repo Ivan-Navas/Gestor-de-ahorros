@@ -59,48 +59,48 @@ export const ContextProvider = ({ children }) => {
     //*Editar objetivo
     e.preventDefault();
     let editObjetive = formulario;
+    const url = `http://localhost:3900/api/editar_objetivo/${objetive._id}`;
 
-    const { datos, cargando } = await Peticion(
-      `http://localhost:3900/api/editar_objetivo/${objetive._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: localStorage.getItem("token"),
-        },
-        editObjetive,
-      }
-    );
+    const requestOptions = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify(editObjetive),
+    };
 
-    if (datos.status == "success") {
-      setResult("guardado");
-    } else {
-      setResult("error");
-    }
+    await fetch(url, requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then(async (data) => {
+        const fileInput = document.querySelector(".fileEdit");
+        const image = fileInput.files[0];
 
-    const fileInput = document.querySelector(".fileEdit");
-
-    if (datos.status === "success" && fileInput.files[0]) {
-      setResult("guardado");
-
-      const formData = new FormData();
-      formData.append("file0", fileInput.files[0]);
-
-      const subida = await Peticion(
-        `http://localhost:3900/api/subir_imagen/${objetive._id}`,
-        "POST",
-        formData,
-        true
-      );
-      if (subida.datos.status === "success") {
-        setResult("guardado");
-      } else {
-        setResult("error");
-      }
-    }
+        if (fileInput.value) {
+          const formData = new FormData();
+          formData.append("file0", image, image.name);
+          await fetch(
+            "http://localhost:3900/api/subir_imagen/" + data.objetivo._id,
+            {
+              method: "POST",
+              headers: {
+                Authorization: localStorage.getItem("token"),
+              },
+              body: formData,
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {})
+            .catch((error) => {
+              console.error("Error al subir la imagen:", error);
+            });
+        }
+      })
+      .catch((error) => console.log(error));
     setModalEditState(false);
     conseguirObjetivos();
-    window.location.reload();
   };
 
   const conseguirObjetivos = async () => {
@@ -175,21 +175,22 @@ export const ContextProvider = ({ children }) => {
 
   const deleteObjetive = async (id, objetives) => {
     //*elimina el objetivo
-    const url = "http://localhost:3900/api/delete_objetive/" + id
+    const url = "http://localhost:3900/api/delete_objetive/" + id;
     const requestOptions = {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': localStorage.getItem('token'),
-      }
-    }
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    };
 
-    fetch(url,requestOptions)
-    .then((response)=>{
-      window.location.reload()
-    }).catch(error=>{
-      console.log(error)
-    })
+    fetch(url, requestOptions)
+      .then((response) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const getObjetive = async (objetive) => {
@@ -203,7 +204,7 @@ export const ContextProvider = ({ children }) => {
         },
       }
     );
-    const data = datos.json()
+    const data = datos.json();
     console.log(data);
 
     if (datos.status == "succes") {
@@ -212,30 +213,28 @@ export const ContextProvider = ({ children }) => {
   };
 
   const getEdited = async (id, objetive) => {
-    fetch(`http://localhost:3900/api/conseguir_objetivo/${id}`,{
+    fetch(`http://localhost:3900/api/conseguir_objetivo/${id}`, {
       headers: {
-        'Authorization': localStorage.getItem('token') ,
-      }
+        Authorization: localStorage.getItem("token"),
+      },
     })
-  .then(response => {
-    // Verificar si la respuesta es exitosa (código de estado 200-299)
-    if (!response.ok) {
-      throw new Error('La petición no fue exitosa');
-    }
-    
-    // Convertir la respuesta a JSON
-    return response.json();
-  })
-  .then(data => {
-    // Manipular los datos obtenidos
-    setObjetive(data.objetivo)
-  })
-  .catch(error => {
-    // Manejar errores
-    console.error('Error en la petición:', error);
-  });
+      .then((response) => {
+        // Verificar si la respuesta es exitosa (código de estado 200-299)
+        if (!response.ok) {
+          throw new Error("La petición no fue exitosa");
+        }
 
-    
+        // Convertir la respuesta a JSON
+        return response.json();
+      })
+      .then((data) => {
+        // Manipular los datos obtenidos
+        setObjetive(data.objetivo);
+      })
+      .catch((error) => {
+        // Manejar errores
+        console.error("Error en la petición:", error);
+      });
   };
 
   return (
