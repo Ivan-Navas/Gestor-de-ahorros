@@ -100,7 +100,7 @@ export const ContextProvider = ({ children }) => {
       })
       .catch((error) => console.log(error));
     setModalEditState(false);
-    conseguirObjetivos();
+    window.location.reload();
   };
 
   const conseguirObjetivos = async () => {
@@ -237,6 +237,11 @@ export const ContextProvider = ({ children }) => {
       });
   };
 
+  const logOut = ()=>{
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
   return (
     <Context.Provider
       value={{
@@ -268,6 +273,7 @@ export const ContextProvider = ({ children }) => {
         setObjetive,
         idOneObjetive,
         setIdOneObjetive,
+        logOut,
       }}
     >
       {children}

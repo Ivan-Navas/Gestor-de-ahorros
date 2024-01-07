@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import "../styles/options.css";
 import { Context } from "../Context/Context.jsx";
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
+import { BiLogOut } from "react-icons/bi";
+import useAuth from "../Hooks/useAuth.jsx";
 
 function Options() {
   const contextOptions = useContext(Context);
+
   return (
     <div className="optionsMain">
       <button
@@ -21,7 +22,9 @@ function Options() {
           title="Agregar objetivo"
         />
       </button>
-      <LoginButton />
+      <button className="buttonOption" onClick={contextOptions.logOut}>
+        <BiLogOut className="option__logOut" />
+      </button>
     </div>
   );
 }
