@@ -74,6 +74,7 @@ function Login() {
             className="form__input"
             placeholder="Correo"
             name="email"
+            autoFocus
             onChange={(e) => {
               changed(e.target.name, e.target.value);
             }}
