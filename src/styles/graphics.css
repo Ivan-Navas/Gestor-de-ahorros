@@ -92,14 +92,14 @@
     border-left: 1px solid #BADE00;
 }
 .overTittle{
-    font-family: 'Roboto';
+    font-family: 'roboto', sans-serif;
     font-style: italic;
     font-weight: 700;
     font-size: 11px;
     color: #fff;
 }
 .overInfo{
-    font-family: 'Roboto';
+    font-family: 'roboto', sans-serif;
     font-style: italic;
     font-weight: 700;
     font-size: 11px;

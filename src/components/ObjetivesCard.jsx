@@ -9,8 +9,6 @@ function ObjetivesCard() {
   useEffect(() => {
     contextCard.conseguirObjetivos();
   }, []);
-  console.log(contextCard.objetives)
-
 
   return (
     <>
@@ -69,7 +67,7 @@ function ObjetivesCard() {
                     <img
                       className="objetiveImage"
                       src={
-                        "https://objetives-render.onrender.com/api/imagen/" + objetive.imagen
+                        "http://localhost:3900/api/imagen/" + objetive.imagen
                       }
                       alt="logoImagen"
                     />
@@ -95,6 +93,7 @@ function ObjetivesCard() {
                 <button
                   className="buttonEdit"
                   onClick={() => {
+                    contextCard.setObjetive({})
                     contextCard.setModalEditState(!contextCard.modalEditState);
                     contextCard.getEdited(objetive._id, contextCard.objetives);
                   }}

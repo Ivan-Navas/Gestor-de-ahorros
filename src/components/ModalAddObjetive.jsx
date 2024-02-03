@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import "../styles/modal.css";
-import logoInput from "../images/add.png";
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
 import { Context } from "../Context/Context.jsx";
@@ -18,7 +17,7 @@ function ModalAddObjetive() {
     let newObjetive = formulario;
 
     const { datos, cargando } = await Peticion(
-      "https://objetives-render.onrender.com/api/create_objetive",
+      "http://localhost:3900/api/create_objetive",
       "POST",
       newObjetive
     );
@@ -34,7 +33,7 @@ function ModalAddObjetive() {
         formData.append("file0", fileInput.files[0]);
 
         const subida = await Peticion(
-          `https://objetives-render.onrender.com/api/subir_imagen/${datos.objetivo._id}`,
+          `http://localhost:3900/api/subir_imagen/${datos.objetivo._id}`,
           "POST",
           formData,
           true
@@ -88,7 +87,7 @@ function ModalAddObjetive() {
                   onChange={cambiado}
                 />
                 <div className="fileContainer">
-                  <img className="logoInput" src={logoInput} alt="logoInput" />
+                  <img className="logoInput" src="https://res.cloudinary.com/ivannavas/image/upload/v1702505569/GestorDeAhorros/Web/add_d2bzks.png" alt="logoInput" />
                   <input className="file" type="file" />
                 </div>
               </div>
