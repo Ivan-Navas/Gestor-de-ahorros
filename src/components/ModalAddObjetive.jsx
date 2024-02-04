@@ -11,13 +11,11 @@ function ModalAddObjetive() {
   const { formulario, enviado, cambiado } = useForm(); //* utilizado en la creacion y edicion de objetivos
   const [result, setResult] = useState(false);
 
-  
-
   const saveObjetive = async (e) => {
     //*Guardar nuevos objetivos
     e.preventDefault();
     let newObjetive = formulario;
-    const url = "http://localhost:3900/api/create_objetive";
+    const url = "https://objetives-render.onrender.com/create_objetive";
     const requestOptions = {
       method: "POST",
       headers: {
@@ -35,39 +33,40 @@ function ModalAddObjetive() {
         const inputElement = document.getElementById("fileInput");
         const image = inputElement.files[0];
 
-    const { datos, cargando } = await Peticion(
-      "https://objetives-render.onrender.com/api/create_objetive",
-      "POST",
-      newObjetive
-    );
-
-    if (datos.status == "success") {
-      setResult("guardado");
-      const fileInput = document.querySelector(".file");
-
-      if (datos.status === "success" && fileInput.files[0]) {
-        setResult("guardado");
-
-        const formData = new FormData();
-        formData.append("file0", fileInput.files[0]);
-
-        const subida = await Peticion(
-          `https://objetives-render.onrender.com/api/subir_imagen/${datos.objetivo._id}`,
+        const { datos, cargando } = await Peticion(
+          "https://objetives-render.onrender.com/api/create_objetive",
           "POST",
-          formData,
-          true
-        );  
+          newObjetive
+        );
 
-        if (subida.datos.status === "success") {
+        if (datos.status == "success") {
           setResult("guardado");
-          var imagen = subida;
-        } else {
-          setResult("error");
+          const fileInput = document.querySelector(".file");
+
+          if (datos.status === "success" && fileInput.files[0]) {
+            setResult("guardado");
+
+            const formData = new FormData();
+            formData.append("file0", fileInput.files[0]);
+
+            const subida = await Peticion(
+              `https://objetives-render.onrender.com/api/subir_imagen/${datos.objetivo._id}`,
+              "POST",
+              formData,
+              true
+            );
+
+            if (subida.datos.status === "success") {
+              setResult("guardado");
+              var imagen = subida;
+            } else {
+              setResult("error");
+            }
+          }
+          modalContext.conseguirObjetivos();
+          modalContext.setModalState(false);
         }
-        modalContext.conseguirObjetivos();
-        modalContext.setModalState(false);
-      })
-      .catch((error) => console.log(error));
+      });
   };
 
   return (

@@ -14,7 +14,10 @@ function Login() {
   const submit = async (e) => {
     e.preventDefault();
 
-    const url = "http://localhost:3900/api/user/login";
+
+    const url = "https://objetives-render.onrender.com/api/user/login";
+    
+
 
     let userToLogin = form;
 
@@ -36,6 +39,7 @@ function Login() {
           //*la peticion tiene un error
           throw new Error(`peticion falló con status ${response.status}`);
         }
+        console.log('hola mundo')
       })
       .then((data) => {
         localStorage.setItem("token", data.token);
@@ -44,7 +48,7 @@ function Login() {
 
         //*setear datos en auth
         setAuth(data.user);
-
+        console.log(data.user)
         setTimeout(() => {
           window.location.reload();
         }, "1000");

@@ -17,11 +17,10 @@ function Register() {
   const { form, changed } = newUseForm({});
   const { setAuth } = useAuth()
 
- 
 
   const saveUser = async (e) => {
     e.preventDefault()
-    const url = "http://localhost:3900/api/user/save";
+    const url = "https://objetives-render.onrender.com/api/user/save";
     let user = form;
     const requestOptions = {
       method: "POST",
@@ -39,7 +38,7 @@ function Register() {
           return response.json(); // parsear la respuesta a json
         } else {
           // la peticion tiene un error
-          throw new Error(`peticion falló con status ${response.status}`);
+          throw new Error(`peticion falló con status ${response.status} url: ${url}`);
         }
       })
       .then((data) => {
@@ -52,9 +51,9 @@ function Register() {
         console.error(error);
       });
 
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 1000);
   };
 
   return (
