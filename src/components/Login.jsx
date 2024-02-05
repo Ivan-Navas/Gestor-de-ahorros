@@ -13,14 +13,8 @@ function Login() {
   const { auth, setAuth } = useAuth();
   const submit = async (e) => {
     e.preventDefault();
-
-
     const url = "https://objetives-render.onrender.com/api/user/login";
-    
-
-
     let userToLogin = form;
-
     const requestOptions = {
       method: "POST",
       headers: {
